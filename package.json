@@ -1,6 +1,6 @@
 {
-  "name": "altus/node-environment",
-  "title": "altus/node-environment",
+  "name": "@altus/node-environment",
+  "title": "@altus/node-environment",
   "version": "1.0.1",
   "description": "Node environment module",
   "main": "index.js",
