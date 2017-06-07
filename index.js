@@ -2,6 +2,9 @@
 var env = require('node-env-file');
 module.exports = {
 
+	/**
+	 * Load environment files
+	 */
 	load: function (path, overWrite) {
 		try {
 			env((path || '.env'), {overwrite: overWrite === true});
