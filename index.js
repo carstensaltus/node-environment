@@ -3,7 +3,12 @@ var env = require('node-env-file');
 module.exports = {
 
 	load: function (path, overWrite) {
-		env(__dirname + '/' + path, {overwrite: overWrite === true});
+		try {
+			env((path || '.env'), {overwrite: overWrite === true});
+			return true;
+		} catch (e) {
+			return false;
+		}
 	},
 
 	get: function (key, defaultVal) {
