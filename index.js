@@ -1,6 +1,6 @@
 'use strict';
 var env = require('node-env-file');
-module.exports = {
+var nodeEnvironment = {
 
 	/**
 	 * Load environment files
@@ -23,3 +23,5 @@ module.exports = {
 	}
 
 };
+
+module.exports = nodeEnvironment;
