@@ -66,6 +66,32 @@ describe('module', function () {
 			expect(env.get('jkl')).to.eql(undefined);
 		});
 
+		it('get(`jkl`, `foo`) should return `foo`', function () {
+			expect(env.get('jkl', 'foo')).to.eql('foo');
+		});
+
+		it('get(`jkl`, `[]`) should return `foo`', function () {
+			expect(env.get('jkl', [])).to.eql(undefined);
+		});
+
+		it('get(`jkl`, `{}`) should return `foo`', function () {
+			expect(env.get('jkl', {})).to.eql(undefined);
+		});
+
+	});
+
+	describe('explode()', function () {
+		process.env.uoo = 'a,b,c';
+		process.env.poo = [1,2,3];
+
+		it('explode(`uoo`) should return [`a`, `b`, `c`]', function () {
+			expect(env.explode('uoo')).to.eql(['a', 'b', 'c']);
+		});
+
+		it('explode(`poo`) should return [`1`, `2`, `3`]', function () {
+			expect(env.explode('poo')).to.eql(['1', '2', '3']);
+		});
+
 	});
 
 });
