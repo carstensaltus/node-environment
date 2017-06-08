@@ -1,4 +1,4 @@
-declare module NodeEnvironment {
+declare module NodeEnv {
 
 	export interface Main {
 		load(path?: string, overWrite?: boolean): boolean;
@@ -8,4 +8,7 @@ declare module NodeEnvironment {
 
 }
 
-declare var nodeEnvironment: NodeEnvironment.Main;
+declare module 'node-env' {
+	var nodeEnv: NodeEnv.Main;
+	export = nodeEnv;
+}

@@ -1,2 +1,0 @@
-
-import {nodeEnvironment} from 'index';
