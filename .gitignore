@@ -32,3 +32,4 @@ typings/modules
 
 # IDE:Sublime
 *.sublime*
+.npmrc
