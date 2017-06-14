@@ -7,25 +7,25 @@ mocha.describe('module', () => {
 
 	mocha.describe('load()', () => {
 
-		// mocha.it('load() shoud return false if file was not loaded', () => {
-		// 	expect(env.load()).to.eql(false);
-		// });
+		mocha.it('load() shoud return true if no file name specified and .env exists', () => {
+			expect(env.load()).to.eql(true);
+		});
 
-		// mocha.it('load(`../../.env.example`) should return true if file has been loaded', () => {
-		// 	expect(env.load('../../.env.example')).to.eql(true);
-		// });
-		//
-		// mocha.it('process.env.MY_STRING should return `hello world`', () => {
-		// 	expect(process.env.MY_STRING).to.eql('hello world');
-		// });
+		mocha.it('load() shoud return true if no file name specified and .env exists', () => {
+			expect(env.load('.env', false)).to.eql(true);
+		});
 
-		mocha.it('load(`../.env.example`) should return true if file has been loaded');
-
-		mocha.it('process.env.MY_STRING should return `hello world`');
+		mocha.it('load(`abc`) shoud return false if file was not loaded', () => {
+			expect(env.load('abc')).to.eql(false);
+		});
 
 	});
 
 	mocha.describe('var()', () => {
+
+		mocha.it('var(`ALTUS`) should return `hello world` from the loaded env file', () => {
+			expect(env.var('ALTUS')).to.eql('hello world');
+		});
 
 		mocha.it('var(`aoo`) should return ``', () => {
 			expect(env.var('aoo')).to.eql('');
@@ -67,25 +67,35 @@ mocha.describe('module', () => {
 
 	mocha.describe('isNodeEnv()', () => {
 
-		mocha.it('isNodeEnv(`45t5erg3`) should return false');
+		mocha.it('isNodeEnv(`staging`) should return false', () => {
+			expect(env.isNodeEnv('staging')).to.eql(false);
+		});
+
+		mocha.it('isNodeEnv(`staging`) should return false', () => {
+			expect(env.isNodeEnv('staging')).to.eql(false);
+		});
 
 	});
 
 	mocha.describe('nodeEnv()', () => {
-		mocha.it('nodeEnv()');
+
+		mocha.it('nodeEnv(`production`) should return `production`', () => {
+			expect(env.nodeEnv('production')).to.eql('production');
+		});
+
 	});
 
-	// mocha.describe('explode()', () => {
-	// 	process.env.uoo = 'a,b,c';
-	// 	process.env.poo = [1, 2, 3];
-	//
-	// 	mocha.it('explode(`uoo`) should return [`a`, `b`, `c`]', () => {
-	// 		expect(env.explode('uoo')).to.eql(['a', 'b', 'c']);
-	// 	});
-	//
-	// 	mocha.it('explode(`poo`) should return [`1`, `2`, `3`]', () => {
-	// 		expect(env.explode('poo')).to.eql(['1', '2', '3']);
-	// 	});
-	//
-	// });
+	mocha.describe('explode()', () => {
+		process.env.uoo = 'a,b,c';
+		process.env.poo = [1, 2, 3];
+
+		mocha.it('explode(`uoo`) should return [`a`, `b`, `c`]', () => {
+			expect(env.explode('uoo')).to.eql(['a', 'b', 'c']);
+		});
+
+		mocha.it('explode(`poo`) should return [`1`, `2`, `3`]', () => {
+			expect(env.explode('poo')).to.eql(['1', '2', '3']);
+		});
+
+	});
 });

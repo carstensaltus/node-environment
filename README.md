@@ -55,6 +55,29 @@ Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 ## 
 
+Get or set a environment variable.
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the environment variable.
+-   `val` **any?** The value you want to assign to the key.
+
+**Examples**
+
+```javascript
+import env from '@altus/node-env'
+
+env.set('APP_NAME', 'Hello world');
+// This will be set as a string '3000'
+env.set('PORT', 3000);
+// This will return as a string 'a,b,c'
+env.set('LOG', ['a', 'b', 'c']);
+```
+
+Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key's value.
+
+## 
+
 Splits a string by a specified character and returns an array.
 
 **Parameters**
@@ -76,29 +99,6 @@ env.get('PORT', '3000');
 ```
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
-
-## 
-
-Get or set a environment variable.
-
-**Parameters**
-
--   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key of the environment variable.
--   `val` **any?** The value you want to assign to the key.
-
-**Examples**
-
-```javascript
-import env from '@altus/node-env'
-
-env.set('APP_NAME', 'Hello world');
-// This will be set as a string '3000'
-env.set('PORT', 3000);
-// This will return as a string 'a,b,c'
-env.set('LOG', ['a', 'b', 'c']);
-```
-
-Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key's value.
 
 ## Devs
 

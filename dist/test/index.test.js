@@ -6,20 +6,20 @@ var index_1 = require("../release/index");
 var expect = chai.expect;
 mocha.describe('module', function () {
     mocha.describe('load()', function () {
-        // mocha.it('load() shoud return false if file was not loaded', () => {
-        // 	expect(env.load()).to.eql(false);
-        // });
-        // mocha.it('load(`../../.env.example`) should return true if file has been loaded', () => {
-        // 	expect(env.load('../../.env.example')).to.eql(true);
-        // });
-        //
-        // mocha.it('process.env.MY_STRING should return `hello world`', () => {
-        // 	expect(process.env.MY_STRING).to.eql('hello world');
-        // });
-        mocha.it('load(`../.env.example`) should return true if file has been loaded');
-        mocha.it('process.env.MY_STRING should return `hello world`');
+        mocha.it('load() shoud return true if no file name specified and .env exists', function () {
+            expect(index_1.default.load()).to.eql(true);
+        });
+        mocha.it('load() shoud return true if no file name specified and .env exists', function () {
+            expect(index_1.default.load('.env', false)).to.eql(true);
+        });
+        mocha.it('load(`abc`) shoud return false if file was not loaded', function () {
+            expect(index_1.default.load('abc')).to.eql(false);
+        });
     });
     mocha.describe('var()', function () {
+        mocha.it('var(`ALTUS`) should return `hello world` from the loaded env file', function () {
+            expect(index_1.default.var('ALTUS')).to.eql('hello world');
+        });
         mocha.it('var(`aoo`) should return ``', function () {
             expect(index_1.default.var('aoo')).to.eql('');
         });
@@ -49,22 +49,29 @@ mocha.describe('module', function () {
         });
     });
     mocha.describe('isNodeEnv()', function () {
-        mocha.it('isNodeEnv(`45t5erg3`) should return false');
+        mocha.it('isNodeEnv(`staging`) should return false', function () {
+            expect(index_1.default.isNodeEnv('staging')).to.eql(false);
+        });
+        mocha.it('isNodeEnv(`staging`) should return false', function () {
+            expect(index_1.default.isNodeEnv('staging')).to.eql(false);
+        });
     });
     mocha.describe('nodeEnv()', function () {
-        mocha.it('nodeEnv()');
+        mocha.it('nodeEnv(`production`) should return `production`', function () {
+            expect(index_1.default.nodeEnv('production')).to.eql('production');
+        });
     });
-    // mocha.describe('explode()', () => {
-    // 	process.env.uoo = 'a,b,c';
-    // 	process.env.poo = [1, 2, 3];
-    //
-    // 	mocha.it('explode(`uoo`) should return [`a`, `b`, `c`]', () => {
-    // 		expect(env.explode('uoo')).to.eql(['a', 'b', 'c']);
-    // 	});
-    //
-    // 	mocha.it('explode(`poo`) should return [`1`, `2`, `3`]', () => {
-    // 		expect(env.explode('poo')).to.eql(['1', '2', '3']);
-    // 	});
-    //
-    // });
+    mocha.describe('explode()', function () {
+        process.env.uoo = 'a,b,c';
+        process.env.poo = [1, 2, 3];
+        mocha.it('explode(`uoo`) should return [`a`, `b`, `c`]', function () {
+            expect(index_1.default.explode('uoo')).to.eql(['a', 'b', 'c']);
+        });
+        mocha.it('explode(`poo`) should return [`1`, `2`, `3`]', function () {
+            expect(index_1.default.explode('poo')).to.eql(['1', '2', '3']);
+        });
+        mocha.it('explode(`poo`) should return [`1`, `2`, `3`]', function () {
+            expect(index_1.default.explode('poo', 'sd')).to.eql(['1', '2', '3']);
+        });
+    });
 });

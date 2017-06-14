@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as path from 'path';
 
 export interface INodeEnv {
 
@@ -72,19 +73,19 @@ export const env: INodeEnv = {
 
 	explode: (key: string, splitCharacter?: string, defaultVal?: string[]): string[] => {
 		const a: string[] = Array.isArray(defaultVal) ? defaultVal : [];
-		const b: string[] = this.var(key).split(splitCharacter || ',');
+		const b: string[] = env.var(key).split(splitCharacter || ',');
 		return typeof process.env[key] === 'undefined' ? a : b;
 	},
 
 	isNodeEnv: (name: string): boolean => {
-		return name === this.nodeEnv();
+		return name === env.nodeEnv();
 	},
 
 	load: (file?: string, overWrite?: boolean): boolean => {
 		let lines: string[];
 
 		try {
-			lines = (fs.readFileSync((file || '.env'), 'utf8') || '')
+			lines = (fs.readFileSync(path.resolve((file || '.env')), 'utf8') || '')
 				.split(/\r?\n|\r/)
 				.filter((line) => {
 					return /\s*=\s*/i.test(line);
@@ -97,9 +98,8 @@ export const env: INodeEnv = {
 		}
 
 		lines.forEach((line) => {
-			if (/^\s*\#/i.test(line)) {
-				// comment
-			} else {
+			const isComment: boolean = /^\s*\#/i.test(line);
+			if (!isComment) {
 				const keyValue: string[] = line.match(/^([^=]+)\s*=\s*(.*)$/);
 				const envKey: string = keyValue[1];
 
@@ -108,7 +108,7 @@ export const env: INodeEnv = {
 
 				// overwrite already defined `process.env.*` values?
 				if (overWrite || typeof process.env[envKey] === 'undefined') {
-					this.env(envKey, process.env[envKey] || envValue);
+					env.var(envKey, process.env[envKey] || envValue);
 				}
 			}
 		});
@@ -117,7 +117,7 @@ export const env: INodeEnv = {
 	},
 
 	nodeEnv: (name?: string): string|undefined => {
-		return this.var('NODE_ENV', name);
+		return name ? env.var('ttt', name) : env.var('ttt');
 	},
 
 	var: (key: string, val?: any): string => {
