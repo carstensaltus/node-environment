@@ -1,0 +1,59 @@
+{
+  "name": "@altus/node-env",
+  "title": "@altus/node-env",
+  "version": "1.0.0",
+  "description": "Node environment module",
+  "main": "dist/release/index.js",
+  "typings": "dist/release/index.d.ts",
+  "engine": {
+    "node": ">= 0.8.0"
+  },
+  "author": {
+    "name": "Altus Carstens",
+    "url": "http://dieheld.co.za"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carstensaltus/node-env.git"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build",
+    "test": "npm run build; ./node_modules/.bin/mocha ./dist/test/*.test.js",
+    "compile.docs": "./node_modules/.bin/gulp compile.docs",
+    "watch": "./node_modules/.bin/gulp watch"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "helper",
+    "environment",
+    "variable",
+    "library"
+  ],
+  "bugs": {
+    "url": "https://github.com/carstensaltus/node-env/issues"
+  },
+  "homepage": "https://github.com/carstensaltus/node-env#readme",
+  "files": [
+    "./dist"
+  ],
+  "devDependencies": {
+    "@types/chai": "~4.0.0",
+    "@types/node": "~4.2.11",
+    "chai": "~4.0.2",
+    "gulp": "~3.9.1",
+    "gulp-clean": "~0.3.2",
+    "gulp-concat": "~2.6.1",
+    "gulp-documentation": "~3.2.0",
+    "gulp-esdoc": "0.4.0",
+    "gulp-jsdoc3": "~1.0.1",
+    "gulp-tslint": "~8.1.1",
+    "gulp-typescript": "~3.1.7",
+    "merge2": "~1.0.3",
+    "mocha": "~3.4.2",
+    "run-sequence": "~1.2.2",
+    "tslint": "~5.4.3",
+    "typescript": "~2.3.4"
+  }
+}

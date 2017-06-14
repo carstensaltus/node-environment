@@ -1,0 +1,14 @@
+os: "linux"
+language: node_js
+node_js:
+  - "node"
+  - "4"
+branches:
+  only:
+    - master
+addons:
+  code_climate:
+    repo_token: eba755efcb1fc3628cd30fc5a2c33a51d15c60a5e471bddda05e41927e89cdf5
+after_success:
+  - npm install -g codeclimate-test-reporter
+  - codeclimate-test-reporter < coverage/lcov.info

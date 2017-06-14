@@ -1,0 +1,34 @@
+# ALL
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
+*.pyc
+*.iml
+*.iws
+*.DS_Store
+
+# Root
+package-lock.json
+npm-debug.log
+.DS_Store
+node_modules/
+log/
+target/
+
+# Typings
+typings/globals
+typings/modules
+
+# IDE:IntelliJ
+.classpath
+.project
+.settings/
+.idea/
+
+# IDE:Sublime
+*.sublime*
