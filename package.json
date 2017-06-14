@@ -18,8 +18,9 @@
     "url": "https://github.com/carstensaltus/node-env.git"
   },
   "scripts": {
-    "build": "./node_modules/.bin/gulp build",
+    "build": "gulp build",
     "test": "npm run build; ./node_modules/.bin/mocha ./dist/test/*.test.js",
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- -- -u export -R spec ./dist/test/**/*.test.js ",
     "compile.docs": "./node_modules/.bin/gulp compile.docs",
     "watch": "./node_modules/.bin/gulp watch"
   },
@@ -46,10 +47,9 @@
     "gulp-clean": "~0.3.2",
     "gulp-concat": "~2.6.1",
     "gulp-documentation": "~3.2.0",
-    "gulp-esdoc": "0.4.0",
-    "gulp-jsdoc3": "~1.0.1",
     "gulp-tslint": "~8.1.1",
     "gulp-typescript": "~3.1.7",
+    "istanbul": "~0.4.5",
     "merge2": "~1.0.3",
     "mocha": "~3.4.2",
     "run-sequence": "~1.2.2",
