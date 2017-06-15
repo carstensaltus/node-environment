@@ -70,8 +70,5 @@ mocha.describe('module', function () {
         mocha.it('explode(`poo`) should return [`1`, `2`, `3`]', function () {
             expect(index_1.default.explode('poo')).to.eql(['1', '2', '3']);
         });
-        mocha.it('explode(`poo`) should return [`1`, `2`, `3`]', function () {
-            expect(index_1.default.explode('poo', 'sd')).to.eql(['1', '2', '3']);
-        });
     });
 });
