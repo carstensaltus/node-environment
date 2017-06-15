@@ -35,7 +35,7 @@ nodes `process.env` object.
 ```javascript
 import env from '@altus/node-env'
 
-if (!env.load('.env')) {
+if (!env.load('/path/to/the/.env')) {
 	console.log('environment file was not found');
 }
 ```
@@ -54,13 +54,15 @@ Get or set a environment variable.
 **Examples**
 
 ```javascript
-import env from '@altus/node-env'
+import env from '@altus/node-env';
 
-env.set('APP_NAME', 'Hello world');
-// This will be set as a string '3000'
-env.set('PORT', 3000);
-// This will return as a string 'a,b,c'
-env.set('LOG', ['a', 'b', 'c']);
+// Set an environment variable.
+// process.env[key] = val;
+env.var('APP_NAME', 'helloWorld');
+
+// Only supplying the first param will get the
+// invironment variable or return as an empty string.
+env.set('APP_NAME');
 ```
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key's value.

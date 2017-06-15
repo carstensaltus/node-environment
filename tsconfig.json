@@ -4,6 +4,13 @@
         "target": "es5",
         "noImplicitAny": true,
         "sourceMap": false,
-        "declaration": true
-    }
+        "declaration": true,
+        "noEmitOnError": true,
+        "typeRoots": ["./typings/globals", "./node_modules/@types"]
+    },
+    "exclude": [
+        "node_modules",
+        "typings/browser",
+        "typings/browser.d.ts"
+    ]
 }

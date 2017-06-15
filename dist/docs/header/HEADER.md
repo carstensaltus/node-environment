@@ -7,4 +7,34 @@
 
 A node environment helper module.
 
-## Documentation
+## Install
+
+```
+_> npm install @altus/node-env --save
+```
+
+## Quick start
+
+Load an environment file
+```
+// Import the package
+import * as env from '@altus/node-env';
+
+// Import/load environment file
+if (!env.load('/path/to/.env')) {
+	console.log('Could not find environment file!');
+}
+
+```
+
+Set and get variables:
+
+```
+// Set environment variable
+env.var('APP_NAME', 'MyFirstApp');
+
+// Get environment variable
+env.var('APP_NAME');
+```
+
+## Read More

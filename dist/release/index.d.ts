@@ -38,7 +38,7 @@ export interface INodeEnv {
      * @return {boolean} - returns a boolean indicating if the file has sucessfully been loaded.
      * @example import env from '@altus/node-env'
      *
-     * if (!env.load('.env')) {
+     * if (!env.load('/path/to/the/.env')) {
      * 	console.log('environment file was not found');
      * }
      */
@@ -49,13 +49,15 @@ export interface INodeEnv {
      * @param  {string} key - The key of the environment variable.
      * @param {any} [val=] - The value you want to assign to the key.
      * @return {string} - The key's value.
-     * @example import env from '@altus/node-env'
+     * @example import env from '@altus/node-env';
      *
-     * env.set('APP_NAME', 'Hello world');
-     * // This will be set as a string '3000'
-     * env.set('PORT', 3000);
-     * // This will return as a string 'a,b,c'
-     * env.set('LOG', ['a', 'b', 'c']);
+     * // Set an environment variable.
+     * // process.env[key] = val;
+     * env.var('APP_NAME', 'helloWorld');
+     *
+     * // Only supplying the first param will get the
+     * // invironment variable or return as an empty string.
+     * env.set('APP_NAME');
      *
      */
     var(key: string, val?: any): string;

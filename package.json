@@ -18,11 +18,10 @@
     "url": "https://github.com/carstensaltus/node-env.git"
   },
   "scripts": {
-    "build": "gulp build",
+    "build": "./node_modules/.bin/gulp build",
+    "watch": "./node_modules/.bin/gulp watch",
     "test": "npm run build; ./node_modules/.bin/mocha ./dist/test/*.test.js",
-    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- -- -u export -R spec ./dist/test/**/*.test.js ",
-    "compile.docs": "./node_modules/.bin/gulp compile.docs",
-    "watch": "./node_modules/.bin/gulp watch"
+    "coverage": "npm run build; istanbul cover ./node_modules/.bin/_mocha -- -- -u export -R spec ./dist/test/**/*.test.js "
   },
   "keywords": [
     "javascript",
@@ -54,6 +53,7 @@
     "mocha": "~3.4.2",
     "run-sequence": "~1.2.2",
     "tslint": "~5.4.3",
-    "typescript": "~2.3.4"
+    "typescript": "~2.3.4",
+    "typings": "~2.1.1"
   }
 }
