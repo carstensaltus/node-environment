@@ -2,7 +2,7 @@
 
 ## 
 
-Check for the current node environemt.
+Check for the current node environment.
 
 **Parameters**
 
@@ -22,7 +22,7 @@ Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refer
 
 ## 
 
-Loads an environemt file and merges its values with
+Loads an environment file and merges its values with
 nodes `process.env` object.
 
 **Parameters**

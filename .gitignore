@@ -19,7 +19,10 @@ npm-debug.log
 node_modules/
 log/
 target/
+
 coverage/
+!./coverage/lcov.info
+
 
 # Typings
 typings/globals

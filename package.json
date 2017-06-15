@@ -21,7 +21,7 @@
     "typings": "./node_modules/.bin/typings install --save --global",
     "build": "npm run typings; ./node_modules/.bin/gulp build",
     "watch": "npm run typings; ./node_modules/.bin/gulp watch",
-    "test": "npm run build; ./node_modules/.bin/mocha ./dist/test/*.test.js",
+    "test": "npm run coverage",
     "coverage": "npm run build; istanbul cover ./node_modules/.bin/_mocha -- -- -u export -R spec ./dist/test/**/*.test.js "
   },
   "keywords": [

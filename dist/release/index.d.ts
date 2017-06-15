@@ -16,7 +16,7 @@ export interface INodeEnv {
      */
     explode(key: string, splitCharacter?: string, defaultVal?: string[]): string[];
     /**
-     * Check for the current node environemt.
+     * Check for the current node environment.
      *
      * @param {string} name
      * @return {string}
@@ -30,7 +30,7 @@ export interface INodeEnv {
      */
     nodeEnv(env?: string): string;
     /**
-     * Loads an environemt file and merges its values with
+     * Loads an environment file and merges its values with
      * nodes `process.env` object.
      *
      * @param {string} [file='.env'] - the path to the environemnt file.
