@@ -38,7 +38,7 @@ env.var('APP_NAME');
 ```
 
 ## Read More
-1. [Documentation](./docs/node-env.md)
+1. [Documentation](./dist/docs/node-env.md)
 
 ## Contributors
 
