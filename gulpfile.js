@@ -19,14 +19,13 @@ gulp.task('compile', (done) => {
   runSequance([
     'compile.release',
     'compile.test'
-  ], 'compile.docs', 'compile.readMe', done);
+  ], 'compile.docs', done);
 });
 
 gulp.task('watch', ['build'], () => {
   return merge([
     gulp.watch('./src/release/**/*.ts', ['build']),
     gulp.watch('./src/test/**/*.ts', ['compile.test']),
-    gulp.watch('./dist/docs/**/*.md', ['compile.readMe']),
     gulp.watch(['./gulpfile.js'], ['build'])
   ]);
 });
@@ -67,23 +66,23 @@ gulp.task('compile.release', ['clean.release'], () => {
 });
 
 gulp.task('clean.docs', () => {
-  return gulp.src('./dist/docs/body/*').pipe(clean());
+  return gulp.src('./dist/docs/*').pipe(clean());
 });
 
 gulp.task('compile.docs', ['clean.docs'], () => {
 	return gulp.src(['./src/release/index.ts'])
     .pipe(docs('md', {
       // https://github.com/documentationjs/documentation/blob/master/docs/USAGE.md
-      filename: 'DOCUMENTATION.md',
+      filename: 'node-env.md',
       polyglot: true
     }))
-    .pipe(gulp.dest('./dist/docs/body'));
+    .pipe(gulp.dest('./dist/docs'));
 });
 
-gulp.task('compile.readMe', () => {
-  return gulp.src([
-    './dist/docs/header/*.md',
-    './dist/docs/body/*.md',
-    './dist/docs/footer/*.md',
-  ]).pipe(concat('README.md')).pipe(gulp.dest('./'));
-});
+// gulp.task('compile.readMe', () => {
+//   return gulp.src([
+//     './dist/docs/header/*.md',
+//     './dist/docs/body/*.md',
+//     './dist/docs/footer/*.md',
+//   ]).pipe(concat('README.md')).pipe(gulp.dest('./'));
+// });
