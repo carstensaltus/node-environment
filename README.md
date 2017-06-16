@@ -11,7 +11,6 @@ A node environment helper module.
 - documentation find a new markup compiler
 - import * issue
 -
-- prevent from pushing up faulty code
 - check tslint if fails, everything sould stop
 - on merging, create new release, merge everything, tag commit, save, pr into master,
 - trigger deployment to npm

@@ -30,7 +30,7 @@ gulp.task('watch', ['build'], () => {
 
 gulp.task('lint', () => {
   return gulp.src('./src/**/*.ts').pipe(tsLint({
-    formatter: 'verbose'
+    formatter: 'stylish'
   })).pipe(tsLint.report())
 });
 
@@ -76,6 +76,17 @@ gulp.task('compile.docs', ['clean.docs'], () => {
     }))
     .pipe(gulp.dest('./dist/docs'));
 });
+
+// gulp.task('pre-test', function () {
+//     // Everything file loaded from here uses babel with .babelrc
+//     require('babel-core/register'); // https://babeljs.io/docs/usage/require/
+//
+//     return gulp.src(srcCode)
+//         // Covering files (we use isparta for babel support)
+//         .pipe(istanbul({instrumenter: require('isparta').Instrumenter}))
+//         // Force `require` to return covered files
+//         .pipe(istanbul.hookRequire());
+// });
 
 // gulp.task('compile.readMe', () => {
 //   return gulp.src([
