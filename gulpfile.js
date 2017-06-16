@@ -23,11 +23,9 @@ gulp.task('compile', (done) => {
 });
 
 gulp.task('watch', ['build'], () => {
-  return merge([
-    gulp.watch('./src/release/**/*.ts', ['build']),
-    gulp.watch('./src/test/**/*.ts', ['compile.test']),
-    gulp.watch(['./gulpfile.js'], ['build'])
-  ]);
+  gulp.watch('./src/release/**/*.ts', ['build']);
+  gulp.watch('./src/test/**/*.ts', ['compile.test']);
+  gulp.watch(['./gulpfile.js'], ['build']);
 });
 
 gulp.task('lint', () => {

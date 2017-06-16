@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Node environment module",
   "main": "dist/release/index.js",
-  "typings": "dist/release/index.d.ts",
+  "typings": "./index.d.ts",
   "engine": {
     "node": ">= 0.8.0"
   },
@@ -17,12 +17,19 @@
     "type": "git",
     "url": "https://github.com/carstensaltus/node-env.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "typings": "./node_modules/.bin/typings install --save --global",
-    "build": "npm run typings; ./node_modules/.bin/gulp build",
-    "watch": "npm run typings; ./node_modules/.bin/gulp watch",
+    "build": "./node_modules/.bin/gulp build",
+    "watch": "./node_modules/.bin/gulp watch",
     "test": "npm run coverage",
-    "coverage": "npm run build; istanbul cover ./node_modules/.bin/_mocha -- -- -u export -R spec ./dist/test/**/*.test.js "
+    "coverage": "npm run build; istanbul cover ./node_modules/.bin/_mocha -- -- -u export -R spec ./dist/test/**/*.test.js"
+  },
+  "pre-push": {
+    "run": [
+      "test"
+    ]
   },
   "keywords": [
     "javascript",
@@ -41,6 +48,7 @@
   ],
   "devDependencies": {
     "@types/chai": "~4.0.0",
+    "@types/mocha": "~2.2.41",
     "@types/node": "~4.2.11",
     "chai": "~4.0.2",
     "gulp": "~3.9.1",
@@ -52,9 +60,8 @@
     "istanbul": "~0.4.5",
     "merge2": "~1.0.3",
     "mocha": "~3.4.2",
+    "pre-push": "~0.1.1",
     "run-sequence": "~1.2.2",
-    "tslint": "~5.4.3",
-    "typescript": "~2.3.4",
-    "typings": "~2.1.1"
+    "tslint": "~5.4.3"
   }
 }

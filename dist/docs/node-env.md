@@ -42,7 +42,7 @@ if (!env.load('/path/to/the/.env')) {
 
 Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** returns a boolean indicating if the file has sucessfully been loaded.
 
-## 
+## var
 
 Get or set a environment variable.
 
@@ -80,10 +80,10 @@ Splits a string by a specified character and returns an array.
 **Examples**
 
 ```javascript
-import env from '@altus/node-env'
+import env from '@altus/node-env';
 
 // If variable was not found, undefined will be returned.
-env.get('PORT');
+env.explode('PORT');
 
 // If variable is not found, '3000' will be returned as a string.
 env.get('PORT', '3000');

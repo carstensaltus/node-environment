@@ -10,10 +10,10 @@ export interface INodeEnv {
 	 * @param  {string} [splitCharacter=','] - The character you want to use to split the string.
 	 * @param  {string[]} defaultVal - If key value wasn't found, use default value
 	 * @return {string[]}
-	 * @example import env from '@altus/node-env'
+	 * @example import env from '@altus/node-env';
 	 *
 	 * // If variable was not found, undefined will be returned.
-	 * env.get('PORT');
+	 * env.explode('PORT');
 	 *
 	 * // If variable is not found, '3000' will be returned as a string.
 	 * env.get('PORT', '3000');
@@ -54,6 +54,7 @@ export interface INodeEnv {
 	/**
 	 * Get or set a environment variable.
 	 *
+	 * @name var
 	 * @param  {string} key - The key of the environment variable.
 	 * @param {any} [val=] - The value you want to assign to the key.
 	 * @return {string} - The key's value.

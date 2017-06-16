@@ -1,7 +1,0 @@
-{
-  "name": "@altus/node-env",
-  "dependencies": {},
-  "globalDependencies": {
-    "mocha": "file:typings/custom/mocha.d.ts"
-  }
-}

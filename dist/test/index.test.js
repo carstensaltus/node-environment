@@ -56,8 +56,13 @@ describe('module', function () {
         });
     });
     describe('nodeEnv()', function () {
-        it('nodeEnv(`production`) should return `production`', function () {
-            expect(index_1.default.nodeEnv('production')).to.eql('production');
+        ['production', 'staging', 'dev'].forEach(function (environment) {
+            it('nodeEnv(`' + environment + '`) should return `' + environment + '`', function () {
+                expect(index_1.default.nodeEnv(environment)).to.eql(environment);
+            });
+            it('nodeEnv() should return `' + environment + '`', function () {
+                expect(index_1.default.nodeEnv()).to.eql(environment);
+            });
         });
     });
     describe('explode()', function () {

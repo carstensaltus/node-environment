@@ -79,8 +79,16 @@ describe('module', () => {
 
 	describe('nodeEnv()', () => {
 
-		it('nodeEnv(`production`) should return `production`', () => {
-			expect(env.nodeEnv('production')).to.eql('production');
+		['production', 'staging', 'dev'].forEach((environment) => {
+
+			it('nodeEnv(`' + environment + '`) should return `' + environment + '`', () => {
+				expect(env.nodeEnv(environment)).to.eql(environment);
+			});
+
+			it('nodeEnv() should return `' + environment + '`', () => {
+				expect(env.nodeEnv()).to.eql(environment);
+			});
+
 		});
 
 	});

@@ -6,7 +6,7 @@
         "sourceMap": false,
         "declaration": true,
         "noEmitOnError": true,
-        "typeRoots": ["./typings/globals", "./node_modules/@types"]
+        "typeRoots": ["./node_modules/@types"]
     },
     "exclude": [
         "node_modules",
