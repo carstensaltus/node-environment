@@ -30,8 +30,23 @@ gulp.task('watch', ['build'], () => {
 
 gulp.task('lint', () => {
   return gulp.src('./src/**/*.ts').pipe(tsLint({
-    formatter: 'stylish'
-  })).pipe(tsLint.report())
+    formatter: 'prose'
+    // configuration: {},
+    // fix: false,
+    // formattersDirectory: null,
+    // rulesDirectory: null,
+    // tslint: null,
+    // program: null
+  })).pipe(tsLint.report({
+    emitError: true,
+    reportLimit: 0,
+    summarizeFailureOutput: true,
+    allowWarnings: false
+  })).on('error', (err) => {
+    console.log('Something went wrong!!!');
+  }).on('success', (res) => {
+    console.log(2312);
+  });
 });
 
 gulp.task('clean.test', () => {

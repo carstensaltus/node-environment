@@ -26,10 +26,24 @@
     "test": "npm run coverage",
     "coverage": "npm run build; istanbul cover ./node_modules/.bin/_mocha -- -- -u export -R spec ./dist/test/**/*.test.js"
   },
-  "pre-push": {
-    "run": [
-      "test"
-    ]
+  "config": {
+    "pre-git": {
+      "enabled": true,
+      "allow-untracked-files": false,
+      "msg-pattern": "^(US|DE)\\d+ - .+",
+      "commit-msg": "simple",
+      "pre-commit": [
+      
+      ],
+      "post-commit": "git status",
+      "pre-push": [
+        "rm -rf node_modules",
+        "npm install",
+        "npm test"
+      ],
+      "post-checkout": "npm install",
+      "post-merge": "npm install"
+    }
   },
   "keywords": [
     "javascript",
@@ -47,23 +61,24 @@
     "./dist"
   ],
   "devDependencies": {
-    "@types/chai": "~4.0.0",
-    "@types/mocha": "~2.2.41",
-    "@types/node": "~4.2.11",
-    "chai": "~4.0.2",
-    "gulp": "~3.9.1",
-    "gulp-clean": "~0.3.2",
-    "gulp-concat": "~2.6.1",
-    "gulp-documentation": "~3.2.0",
-    "gulp-istanbul": "~1.1.2",
-    "gulp-tslint": "~8.1.1",
-    "gulp-typescript": "~3.1.7",
-    "istanbul": "~0.4.5",
-    "merge2": "~1.0.3",
-    "mocha": "~3.4.2",
-    "pre-push": "~0.1.1",
-    "run-sequence": "~1.2.2",
-    "tslint": "~5.4.3",
-    "typescript": "~2.3.4"
-  }
+    "@types/chai": "4.0",
+    "@types/mocha": "2.2",
+    "@types/node": "4.2",
+    "chai": "4.0",
+    "gulp": "3.9",
+    "gulp-clean": "0.3",
+    "gulp-concat": "2.6",
+    "gulp-documentation": "3.2",
+    "gulp-istanbul": "1.1",
+    "gulp-tslint": "8.1",
+    "gulp-typescript": "3.1",
+    "istanbul": "0.4",
+    "merge2": "1.0",
+    "mocha": "3.4",
+    "pre-git": "3.15",
+    "run-sequence": "1.2",
+    "tslint": "5.4",
+    "typescript": "2.3"
+  },
+  "dependencies": {}
 }

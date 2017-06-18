@@ -72,7 +72,7 @@ export interface INodeEnv {
 	var(key: string, val?: any): string;
 }
 
-export const env : INodeEnv = {
+export const env: INodeEnv = {
 
 	explode: (key: string, splitCharacter?: string, defaultVal?: string[]): string[] => {
 		const a: string[] = Array.isArray(defaultVal) ? defaultVal : [];
