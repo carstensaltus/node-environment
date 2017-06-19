@@ -30,10 +30,8 @@
     "pre-git": {
       "enabled": true,
       "allow-untracked-files": false,
-      "msg-pattern": "^(US|DE)\\d+ - .+",
-      "commit-msg": "simple",
       "pre-commit": [
-      
+        "echo 123"
       ],
       "post-commit": "git status",
       "pre-push": [

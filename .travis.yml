@@ -1,20 +1,23 @@
 os: linux
 language: node_js
 node_js:
-  - "node"
-  - "4"
+  - node
+  - 4
 branches:
   only:
     - master
 addons:
+  # https://docs.codeclimate.com/v1.0/docs/travis-ci-javascript-test-coverage
   code_climate:
     repo_token: eba755efcb1fc3628cd30fc5a2c33a51d15c60a5e471bddda05e41927e89cdf5
 after_success:
+  # https://docs.codeclimate.com/v1.0/docs/travis-ci-javascript-test-coverage
   - npm install -g codeclimate-test-reporter
   - codeclimate-test-reporter < ./coverage/lcov.info
 deploy:
   # https://docs.travis-ci.com/user/encryption-keys/#Usage
   provider: npm
+  # https://docs.travis-ci.com/user/encryption-keys/#Usage
   api_key: "f7629d8e-3d57-49e1-a818-c7dc624602cc",
   on:
     tags: true
