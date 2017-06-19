@@ -13,7 +13,6 @@
 *.DS_Store
 
 # Root
-package-lock.json
 npm-debug.log
 .DS_Store
 node_modules/
@@ -21,8 +20,6 @@ log/
 target/
 
 coverage/
-!./coverage/lcov.info
-
 
 # Typings
 typings/globals
