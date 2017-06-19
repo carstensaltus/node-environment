@@ -30,8 +30,9 @@
     "pre-git": {
       "enabled": true,
       "allow-untracked-files": false,
+      "commit-msg": "simple",
       "pre-commit": [
-        "echo 123"
+        "npm test"
       ],
       "post-commit": "git status",
       "pre-push": [
