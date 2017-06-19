@@ -1,7 +1,7 @@
 {
   "name": "@altus/node-env",
   "title": "@altus/node-env",
-  "version": "1.0.2",
+  "version": "1.0.9",
   "description": "Node environment module",
   "main": "dist/release/index.js",
   "typings": "./index.d.ts",
