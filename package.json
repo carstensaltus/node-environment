@@ -30,7 +30,6 @@
     "pre-git": {
       "enabled": true,
       "allow-untracked-files": false,
-      "commit-msg": "simple",
       "pre-commit": [
         "npm test"
       ],
