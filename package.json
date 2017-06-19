@@ -33,12 +33,12 @@
       "pre-commit": [
         "npm test"
       ],
-      "post-commit": "git status",
       "pre-push": [
         "rm -rf node_modules",
         "npm install",
         "npm test"
       ],
+      "post-commit": "git status",
       "post-checkout": "npm install",
       "post-merge": "npm install"
     }

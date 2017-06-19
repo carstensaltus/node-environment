@@ -1,5 +1,4 @@
 import * as fs from 'fs';
-import * as path from 'path';
 
 export interface INodeEnv {
 
@@ -88,7 +87,7 @@ export const env: INodeEnv = {
 		let lines: string[];
 
 		try {
-			lines = (fs.readFileSync(path.resolve((file || '.env')), 'utf8') || '')
+			lines = (fs.readFileSync(file || '.env', 'utf8') || '')
 				.split(/\r?\n|\r/)
 				.filter((line) => {
 					return /\s*=\s*/i.test(line);
@@ -100,8 +99,11 @@ export const env: INodeEnv = {
 			return false;
 		}
 
+		overWrite = (overWrite === true || typeof overWrite === 'undefined');
+
 		lines.forEach((line) => {
 			const isComment: boolean = /^\s*\#/i.test(line);
+
 			if (!isComment) {
 				const keyValue: string[] = line.match(/^([^=]+)\s*=\s*(.*)$/);
 				const envKey: string = keyValue[1];
@@ -110,8 +112,10 @@ export const env: INodeEnv = {
 				const envValue: string = keyValue[2].match(/^(['"]?)([^\n]*)\1$/m)[2];
 
 				// overwrite already defined `process.env.*` values?
-				if (overWrite || typeof process.env[envKey] === 'undefined') {
-					env.var(envKey, process.env[envKey] || envValue);
+				if (overWrite) {
+					env.var(envKey, envValue);
+				} else if (typeof process.env[envKey] === 'undefined') {
+					env.var(envKey, envValue);
 				}
 			}
 		});

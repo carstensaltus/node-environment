@@ -42,6 +42,30 @@ if (!env.load('/path/to/the/.env')) {
 
 Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** returns a boolean indicating if the file has sucessfully been loaded.
 
+## 
+
+Splits a string by a specified character and returns an array.
+
+**Parameters**
+
+-   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key value of the env variable.
+-   `splitCharacter` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** The character you want to use to split the string. (optional, default `','`)
+-   `defaultVal` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** If key value wasn't found, use default value
+
+**Examples**
+
+```javascript
+import env from '@altus/node-env';
+
+// If variable was not found, undefined will be returned.
+env.explode('PORT');
+
+// If variable is not found, '3000' will be returned as a string.
+env.get('PORT', '3000');
+```
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
+
 ## var
 
 Get or set a environment variable.
@@ -66,27 +90,3 @@ env.set('APP_NAME');
 ```
 
 Returns **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key's value.
-
-## 
-
-Splits a string by a specified character and returns an array.
-
-**Parameters**
-
--   `key` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** The key value of the env variable.
--   `splitCharacter` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)?** The character you want to use to split the string. (optional, default `','`)
--   `defaultVal` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** If key value wasn't found, use default value
-
-**Examples**
-
-```javascript
-import env from '@altus/node-env';
-
-// If variable was not found, undefined will be returned.
-env.explode('PORT');
-
-// If variable is not found, '3000' will be returned as a string.
-env.get('PORT', '3000');
-```
-
-Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)>** 

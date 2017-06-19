@@ -1,24 +1,33 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var chai = require("chai");
+var path = require("path");
 var index_1 = require("../release/index");
 var expect = chai.expect;
 describe('module', function () {
     describe('load()', function () {
-        it('load() shoud return true if no file name specified and .env exists', function () {
-            expect(index_1.default.load()).to.eql(true);
-        });
-        it('load() shoud return true if no file name specified and .env exists', function () {
-            expect(index_1.default.load('.env', false)).to.eql(true);
-        });
+        var envFile = path.resolve('dist/.env');
+        process.env.GHI = 'notOverWriten';
         it('load(`abc`) shoud return false if file was not loaded', function () {
             expect(index_1.default.load('abc')).to.eql(false);
         });
+        it('load(`./dist/.env`, false) shoud return true if .env was loaded', function () {
+            expect(index_1.default.load(envFile, false)).to.eql(true);
+        });
+        it('process.env.GHI should not be over written equal `notOverWriten`', function () {
+            expect(process.env.GHI).to.eql('notOverWriten');
+        });
+        it('process.env.ABC should return `123` which was set by the load method', function () {
+            expect(process.env.ABC).to.eql('123');
+        });
+        it('load(`./dist/.env`, true) shoud return true if .env was loaded', function () {
+            expect(index_1.default.load(envFile, true)).to.eql(true);
+        });
+        it('process.env.GHI should not be over written and equal `uuu`', function () {
+            expect(process.env.GHI).to.eql('uuu');
+        });
     });
     describe('var()', function () {
-        it('var(`ALTUS`) should return `hello world` from the loaded env file', function () {
-            expect(index_1.default.var('ALTUS')).to.eql('hello world');
-        });
         it('var(`aoo`) should return ``', function () {
             expect(index_1.default.var('aoo')).to.eql('');
         });

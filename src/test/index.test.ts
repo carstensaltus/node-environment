@@ -1,31 +1,44 @@
 import * as chai from 'chai';
 import * as mocha from 'mocha';
+import * as path from 'path';
 import env from '../release/index';
+
 const expect = chai.expect;
 
 describe('module', () => {
 
 	describe('load()', () => {
 
-		it('load() shoud return true if no file name specified and .env exists', () => {
-			expect(env.load()).to.eql(true);
-		});
-
-		it('load() shoud return true if no file name specified and .env exists', () => {
-			expect(env.load('.env', false)).to.eql(true);
-		});
+		const envFile = path.resolve('dist/.env');
+		process.env.GHI = 'notOverWriten';
 
 		it('load(`abc`) shoud return false if file was not loaded', () => {
 			expect(env.load('abc')).to.eql(false);
 		});
 
+		it('load(`./dist/.env`, false) shoud return true if .env was loaded', () => {
+			expect(env.load(envFile, false)).to.eql(true);
+		});
+
+		it('process.env.GHI should not be over written equal `notOverWriten`', () => {
+			expect(process.env.GHI).to.eql('notOverWriten');
+		});
+
+		it('process.env.ABC should return `123` which was set by the load method', () => {
+			expect(process.env.ABC).to.eql('123');
+		});
+
+		it('load(`./dist/.env`, true) shoud return true if .env was loaded', () => {
+			expect(env.load(envFile, true)).to.eql(true);
+		});
+
+		it('process.env.GHI should not be over written and equal `uuu`', () => {
+			expect(process.env.GHI).to.eql('uuu');
+		});
+
 	});
 
 	describe('var()', () => {
-
-		it('var(`ALTUS`) should return `hello world` from the loaded env file', () => {
-			expect(env.var('ALTUS')).to.eql('hello world');
-		});
 
 		it('var(`aoo`) should return ``', () => {
 			expect(env.var('aoo')).to.eql('');

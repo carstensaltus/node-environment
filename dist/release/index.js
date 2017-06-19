@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
-var path = require("path");
 exports.env = {
     explode: function (key, splitCharacter, defaultVal) {
         var a = Array.isArray(defaultVal) ? defaultVal : [];
@@ -14,7 +13,7 @@ exports.env = {
     load: function (file, overWrite) {
         var lines;
         try {
-            lines = (fs.readFileSync(path.resolve((file || '.env')), 'utf8') || '')
+            lines = (fs.readFileSync(file || '.env', 'utf8') || '')
                 .split(/\r?\n|\r/)
                 .filter(function (line) {
                 return /\s*=\s*/i.test(line);
@@ -26,6 +25,7 @@ exports.env = {
         catch (err) {
             return false;
         }
+        overWrite = (overWrite === true || typeof overWrite === 'undefined');
         lines.forEach(function (line) {
             var isComment = /^\s*\#/i.test(line);
             if (!isComment) {
@@ -34,8 +34,11 @@ exports.env = {
                 // remove ' and " characters if right side of = is quoted
                 var envValue = keyValue[2].match(/^(['"]?)([^\n]*)\1$/m)[2];
                 // overwrite already defined `process.env.*` values?
-                if (overWrite || typeof process.env[envKey] === 'undefined') {
-                    exports.env.var(envKey, process.env[envKey] || envValue);
+                if (overWrite) {
+                    exports.env.var(envKey, envValue);
+                }
+                else if (typeof process.env[envKey] === 'undefined') {
+                    exports.env.var(envKey, envValue);
                 }
             }
         });
